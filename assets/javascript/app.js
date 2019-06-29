@@ -50,10 +50,13 @@ var clickedBtn = function () {
   }).then(function (response) {
 
     var results = response.data;  
+    console.log(results)
+
+    $("#pokemon-gifs").empty();
 
     for (var i = 0; i < results.length; i++) {
-      var gifDiv = $('<div>');
-
+      var gifDiv = $('<div class="gifyImgs">');
+      console.log(results[i]);
       var rating = results[i].rating;
 
       var p = $('<p>').text("Rating: " + rating);
@@ -63,9 +66,9 @@ var clickedBtn = function () {
 
       gifDiv.prepend(p);
       gifDiv.prepend(pokemonGifUrl);
-    }
 
-    $("#pokemon-gifs").append(gifDiv);
+      $("#pokemon-gifs").prepend(gifDiv);
+    }
   })
 }
 
